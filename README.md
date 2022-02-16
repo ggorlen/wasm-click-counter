@@ -1,5 +1,5 @@
 # wasm-click-counter
-A POC for using Emscripten to generate [WASM](https://webassembly.org/) from C with a HTML5 front-end and [Puppeteer](https://github.com/puppeteer/puppeteer) for integration testing (unit testing TBD).
+A POC for using Emscripten to generate [WASM](https://webassembly.org/) from C with a HTML5 front-end, [Puppeteer](https://github.com/puppeteer/puppeteer) for integration testing and [utest](https://github.com/sheredom/utest.h) for unit testing.
 
 ## Windows installation
 The main dependency is [Emscripten](https://emscripten.org/), which happens to depend on Node and Python which are also used in this project. On Windows, I used [Chocolatey](https://community.chocolatey.org/packages/emscripten) to install Emscripten with [this script](https://github.com/aminya/chocolatey-emscripten), running `choco install emscripten -y`. The script can also be used without Chocolatey. Once `emsdk` is available, I followed the setup shown [in the Emscripten docs](https://emscripten.org/docs/getting_started/downloads.html):
@@ -9,7 +9,7 @@ The main dependency is [Emscripten](https://emscripten.org/), which happens to d
 ./emsdk activate latest
 
 # export `emcc`, `npm`, `node`, `python`, etc to the path
-.\C:\Users\<your user name>\AppData\Local\emsdk\emsdk_env.ps1
+C:\Users\<your user name>\AppData\Local\emsdk\emsdk_env.ps1
 ```
 
 Once you have a prompt with the exported path using `emsdk_env.ps1`, clone or download this repo and run `cd ~/path/to/wasm-click-counter`.
@@ -38,8 +38,7 @@ The typical development workflow is to run `npm run start`, then run `nodemon` t
 I'm using the `gh-pages` branch and the `docs` folder to deploy to <https://ggorlen.github.io/wasm-click-counter>. Run `git checkout gh-pages && git merge master`, build the project if needed and run `npm run deploy` to copy `dist` to `docs` (`docs` is a special name that GitHub can use as a root pages directory). Then push up to GitHub.
 
 ## Resources
-Unit testing possibilities:
-- <https://github.com/sheredom/utest.h> (using this one for now)
+Other unit testing libs:
 - <https://github.com/rubenvannieuwpoort/c_unit_tests>
 - <https://github.com/Snaipe/Criterion>
 - <https://github.com/google/googletest>
